@@ -15,7 +15,7 @@
  */
 
 import {getLoadState} from '../lib/getLoadState.js';
-import {getSelector} from '../lib/getSelector.js';
+import {getSelector, getClientRects} from '../lib/getSelector.js';
 import {onINP as unattributedOnINP} from '../onINP.js';
 import {
   INPMetric,
@@ -39,6 +39,7 @@ const attributeINP = (metric: INPMetric): void => {
 
     (metric as INPMetricWithAttribution).attribution = {
       eventTarget: getSelector(longestEntry.target),
+      eventClientRects: getClientRects(longestEntry.target),
       eventType: longestEntry.name,
       eventTime: longestEntry.startTime,
       eventEntry: longestEntry,

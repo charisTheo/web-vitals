@@ -37,6 +37,12 @@ export interface INPAttribution {
    */
   eventTarget?: string;
   /**
+   * The coordinates of the element that the user interacted with for
+   * the event corresponding to INP, in the following notation:
+   * '<top> <right> <bottom> <left>' in viewport pixels
+   */
+  eventClientRects?: string;
+  /**
    * The time when the user interacted for the event corresponding to INP.
    * This time will match the `timeStamp` value of the `event` dispatched.
    */

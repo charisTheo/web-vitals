@@ -46,3 +46,20 @@ export const getSelector = (node: Node | null | undefined, maxLen?: number) => {
   }
   return sel;
 };
+
+export const getClientRects = (node: Node | null | undefined) => {
+  let clientRects = '';
+
+  try {
+    if (node && node.nodeType !== 9) {
+      const el: Element = node as Element;
+      // Docs: https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect
+      const {top, right, bottom, left} = el.getBoundingClientRect();
+
+      clientRects = `${top} ${right} ${bottom} ${left}`; // like `padding` CSS property values
+    }
+  } catch (err) {
+    // Do nothing...
+  }
+  return clientRects;
+};
